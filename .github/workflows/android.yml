@@ -31,9 +31,7 @@ jobs:
 
     # Create google-services
     - name: Create google-services
-      run:
-        mkdir ./app/src/release
-        echo '${{ secrets.GOOGLE_SERVICES_JSON_RELEASE }}' > ./app/src/release/google-services.json
+      run: echo '${{ secrets.GOOGLE_SERVICES_JSON_RELEASE }}' > ./app/google-services.json
     
     # Build Debug APK
     - name: Build Debug APK
