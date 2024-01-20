@@ -29,11 +29,12 @@ jobs:
     - name: Clean Build
       run: ./gradlew clean
 
+    - name: google-services json 생성
+      run: touch google-services.json
+      
     # Create google-services
     - name: Create google-services
-      env:
-        DATA: ${{ secrets.GOOGLE_SERVICES_JSON_RELEASE }}
-      run: echo $DATA >> D:\a\OnAndOff-Android\OnAndOff-Android\app\google-services.json
+      run: echo '${{ secrets.GOOGLE_SERVICES_JSON_RELEASE }}' >> D:\a\OnAndOff-Android\OnAndOff-Android\app\google-services.json
     
     # Build Debug APK
     - name: Build Debug APK
