@@ -29,12 +29,16 @@ jobs:
     - name: Clean Build
       run: ./gradlew clean
 
-    - name: google-services json 생성
-      run: touch google-services.json
-      
+    - name: Create file
+      run: cat /home/runner/work/OnAndOff-Android/OnAndOff-Android/app/google-services.json | base64
+
+    - name: Putting data
+      env:
+        DATA: ${{ secrets.GOOGLE_SERVICES_JSON_RELEASE }}
+      run: echo $DATA > /home/runner/work/OnAndOff-Android/OnAndOff-Android/app/google-services.json
     # Create google-services
-    - name: Create google-services
-      run: echo '${{ secrets.GOOGLE_SERVICES_JSON_RELEASE }}' >> C:\Users\Hoseop\AndroidStudioProjects\OnAndOff-Android\app\google-services.json
+    #- name: Create google-services
+     # run: echo '${{ secrets.GOOGLE_SERVICES_JSON_RELEASE }}' >> C:\Users\Hoseop\AndroidStudioProjects\OnAndOff-Android\app\google-services.json
     
     # Build Debug APK
     - name: Build Debug APK
