@@ -79,36 +79,36 @@ platform :android do
 #         puts artifactPath
 
     # 플레이스토어에 업로드
-    upload_to_play_store(
-        track: "production",
-        json_key: ENV['GOOGLE_SERVICE_ACCOUNT_KEY'],
-        aab: ENV['AAB_RELEASE_PATH'],
-        in_app_update_priority: priority,
-        skip_upload_metadata: true,
-        skip_upload_images: true,
-        skip_upload_screenshots: true,
-        skip_upload_apk: true,
-        release_status: "completed"
-    )
-    end
+#     upload_to_play_store(
+#         track: "production",
+#         json_key: ENV['GOOGLE_SERVICE_ACCOUNT_KEY'],
+#         aab: ENV['AAB_RELEASE_PATH'],
+#         in_app_update_priority: priority,
+#         skip_upload_metadata: true,
+#         skip_upload_images: true,
+#         skip_upload_screenshots: true,
+#         skip_upload_apk: true,
+#         release_status: "completed"
+#     )
+#     end
 
-# # production 트랙 출시
-# desc "deploy production"
-# lane :release do
-# gradle(task: "clean")
-# # 빌드
-# gradle(
-#     task: "bundle",
-#     build_type: "release",
-#     print_command: true,
-#     properties: {
+# production 트랙 출시
+    desc "deploy production"
+        lane :release do
+        gradle(task: "clean")
+    # 빌드
+        gradle(
+            task: "bundle",
+            build_type: "release",
+            print_command: true,
+            properties: {
 #     # app signing
-#     "android.injected.signing.store.file" => ENV['SIGNED_STORE_FILE'],
-#     "android.injected.signing.store.password" => ENV['SIGNED_STORE_PASSWORD'],
-#     "android.injected.signing.key.alias" => ENV['SIGNED_KEY_ALIAS'],
-#     "android.injected.signing.key.password" => ENV['SIGNED_KEY_PASSWORD']
-#     }
-# )
+                "android.injected.signing.store.file" => ENV['SIGNED_STORE_FILE'],
+                "android.injected.signing.store.password" => ENV['SIGNED_STORE_PASSWORD'],
+                "android.injected.signing.key.alias" => ENV['SIGNED_KEY_ALIAS'],
+                "android.injected.signing.key.password" => ENV['SIGNED_KEY_PASSWORD']
+            }
+        )
     # 플레이스토어에 업로드
 #     upload_to_play_store(
 #         track: "production",
