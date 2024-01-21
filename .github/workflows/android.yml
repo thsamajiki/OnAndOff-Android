@@ -27,8 +27,6 @@ jobs:
     - name: Type google-services
       run: type D:\a\OnAndOff-Android\OnAndOff-Android\app\google-services.json
 
-    
-
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
@@ -38,8 +36,6 @@ jobs:
     - name: Clean Build
       run: ./gradlew clean
 
-    
-    
     # Build Debug APK
     - name: Build Debug APK
       id: buildDebug
@@ -78,7 +74,7 @@ jobs:
       id: sign_app
       uses: r0adkll/sign-android-release@v1
       with:
-        releaseDirectory: app/release
+        releaseDirectory: ./app/release
         signingKeyBase64: ${{ secrets.APP_RELEASE_KEY_STORE_BASE64 }}
         alias: ${{ secrets.SIGNING_KEY_ALIAS }}
         keyStorePassword: ${{ secrets.SIGNING_KEY_STORE_PASSWORD }}
