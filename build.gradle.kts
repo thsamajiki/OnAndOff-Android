@@ -28,3 +28,14 @@ extra.apply {
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+
+tasks.register("bundleRelease", type = Exec::class) {
+    commandLine(project.rootDir.resolve("gradlew"), "bundle")
+    workingDir = project.rootDir
+}
+
+tasks.register("release") {
+    dependsOn(tasks["clean"])
+    dependsOn(tasks["bundleRelease"])
+    mustRunAfter(tasks["clean"])
+}
