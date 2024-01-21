@@ -109,6 +109,7 @@ platform :android do
                 "android.injected.signing.key.password" => ENV['SIGNED_KEY_PASSWORD']
             }
         )
+    end
     # 플레이스토어에 업로드
 #     upload_to_play_store(
 #         track: "production",
