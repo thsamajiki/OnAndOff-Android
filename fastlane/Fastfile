@@ -58,25 +58,25 @@ platform :android do
 #         gitCommitAndPush()
 #     end
 
-    desc "Deploy a new version to the Google Play"
-        lane :deploy do
-            gradle(task: "clean assembleRelease")
-            upload_to_play_store
-        end
+#     desc "Deploy a new version to the Google Play"
+#         lane :deploy do
+#             gradle(task: "clean assembleRelease")
+#             upload_to_play_store
+#         end
 
-        desc "Lane for distribution"
-            lane :stagingDeploy do
+    desc "Lane for distribution"
+        lane :stagingDeploy do
 
-            gradle(task: "clean assembleDebug")
+        gradle(task: "clean assembleDebug")
 
-            firebase_app_distribution(
-                app: "1:751634127071:android:13845ffecc2829b3e6f16a",
-                groups: "OnandOff",
-                release_notes_file: "fastlane/release-notes.txt",
-                firebase_cli_token: "1//0ekFftxojojIjCgYIARAAGA4SNwF-L9Irpy5AVlHyCMjYinkMknpo1G9Xcdqr_74-n7uWhO92nkbg_PtItOEyoDjG90Gi99V9Efc",
-                debug: false
-            )
-        end
+        firebase_app_distribution(
+            app: "1:751634127071:android:13845ffecc2829b3e6f16a",
+            groups: "OnandOff",
+            release_notes_file: "fastlane/release-notes.txt",
+            firebase_cli_token: "1//0ekFftxojojIjCgYIARAAGA4SNwF-L9Irpy5AVlHyCMjYinkMknpo1G9Xcdqr_74-n7uWhO92nkbg_PtItOEyoDjG90Gi99V9Efc",
+            debug: false
+        )
+    end
 
     desc "Deploy a new version to the Google Play"
         lane :deploy do
