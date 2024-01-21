@@ -78,11 +78,11 @@ platform :android do
         )
     end
 
-    desc "Deploy a new version to the Google Play"
-        lane :deploy do
-            gradle(task: "clean assembleRelease")
-            upload_to_play_store
-        end
+#     desc "Deploy a new version to the Google Play"
+#         lane :deploy do
+#             gradle(task: "clean assembleRelease")
+#             upload_to_play_store
+#         end
 
     desc "Deploy a new version to the Google Play (ProductionType)"
         lane :productionDeploy do
@@ -92,6 +92,20 @@ platform :android do
         filePath = Dir['../app/release/*.aab'].last
         artifactPath = filePath.sub("..",".")
         puts artifactPath
+
+        # 플레이스토어에 업로드
+        upload_to_play_store(
+            track: "production",
+            json_key: ENV['GOOGLE_SERVICE_ACCOUNT_KEY'],
+            aab: ENV['AAB_RELEASE_PATH'],
+            in_app_update_priority: priority,
+            skip_upload_metadata: true,
+            skip_upload_images: true,
+            skip_upload_screenshots: true,
+            skip_upload_apk: true,
+            release_status: "completed"
+        )
+        end
 
 # # production 트랙 출시
 # desc "deploy production"
@@ -111,16 +125,16 @@ platform :android do
 #     }
 # )
     # 플레이스토어에 업로드
-    upload_to_play_store(
-        track: "production",
-        json_key: ENV['GOOGLE_SERVICE_ACCOUNT_KEY'],
-        aab: ENV['AAB_RELEASE_PATH'],
-        in_app_update_priority: priority,
-        skip_upload_metadata: true,
-        skip_upload_images: true,
-        skip_upload_screenshots: true,
-        skip_upload_apk: true,
-        release_status: "completed"
-    )
-    end
+#     upload_to_play_store(
+#         track: "production",
+#         json_key: ENV['GOOGLE_SERVICE_ACCOUNT_KEY'],
+#         aab: ENV['AAB_RELEASE_PATH'],
+#         in_app_update_priority: priority,
+#         skip_upload_metadata: true,
+#         skip_upload_images: true,
+#         skip_upload_screenshots: true,
+#         skip_upload_apk: true,
+#         release_status: "completed"
+#     )
+#     end
 end
