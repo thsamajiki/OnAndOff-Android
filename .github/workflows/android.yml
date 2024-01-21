@@ -29,6 +29,24 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
+    # Fastlane 위한 Ruby Setting
+    - name: Set Up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler: "Gemfile.lock"
+        ruby-version: 3.2.2
+        bundler-cache: true
+
+    # Fastlane Setting
+    - name: Set Up fastlane And Publish Google Play
+      uses: maierj/fastlane-action@v3.0.0
+      with:
+        lane: 'productionDeploy'
+        SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+        SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_KEY_STORE_PASSWORD }} 
+      
     - name: Build with Gradle
       run: ./gradlew build
     
@@ -84,21 +102,21 @@ jobs:
         
       
     # Fastlane 위한 Ruby Setting
-    - name: Set Up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler: "Gemfile.lock"
-        ruby-version: 2.7.2
-        bundler-cache: true
+    # - name: Set Up Ruby
+      # uses: ruby/setup-ruby@v1
+      # with:
+        # bundler: "Gemfile.lock"
+        # ruby-version: 3.2.2
+        # bundler-cache: true
 
     # Fastlane Setting
-    - name: Set Up fastlane And Publish Google Play
-      uses: maierj/fastlane-action@v2.2.0
-      with:
-        lane: 'productionDeploy'
-        SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-        SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
-        SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_KEY_STORE_PASSWORD }} 
+    # - name: Set Up fastlane And Publish Google Play
+      # uses: maierj/fastlane-action@v2.2.0
+      # with:
+        # lane: 'productionDeploy'
+        # SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+        # SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        # SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_KEY_STORE_PASSWORD }} 
 
     # - name: Discord Webhook Action
       # uses: tsickert/discord-webhook@v5.3.0
