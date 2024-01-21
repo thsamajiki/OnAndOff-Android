@@ -85,13 +85,13 @@ platform :android do
         end
 
     desc "Deploy a new version to the Google Play (ProductionType)"
-    lane :productionDeploy do
-    gradle(task: "release")
+        lane :productionDeploy do
+        gradle(task: "release")
 
-    # 특정 폴더에 .aab 파일 찾고 나서 앞에 .. -> . 치환 처리
-    filePath = Dir['../app/release/*.aab'].last
-    artifactPath = filePath.sub("..",".")
-    puts artifactPath
+        # 특정 폴더에 .aab 파일 찾고 나서 앞에 .. -> . 치환 처리
+        filePath = Dir['../app/release/*.aab'].last
+        artifactPath = filePath.sub("..",".")
+        puts artifactPath
 
 # # production 트랙 출시
 # desc "deploy production"
