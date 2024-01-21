@@ -86,7 +86,7 @@ androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipeRefreshLayout" }
-androidx-arch-core = { module = "androidx.arch-core:core-testing", version.ref = "archCore"}
+# androidx-arch-core = { module = "androidx.arch-core:core-testing", version.ref = "archCore"}
 androidx-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "paging" }
 agp = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 
