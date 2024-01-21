@@ -33,8 +33,8 @@ android {
             isDebuggable = true
         }
         getByName("release") {
-            isShrinkResources = true
-            isMinifyEnabled = true
+            isShrinkResources = false
+            isMinifyEnabled = false
             isDebuggable = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             proguardFile("proguard-kakao.pro")
@@ -84,7 +84,7 @@ dependencies {
     implementation(libs.bundles.coroutines)
 
     implementation(libs.play.core)
-    testImplementation(libs.androidx.arch.core)
+    // testImplementation(libs.androidx.arch.core)
 
     // Hilt
     implementation(libs.hilt.android)
