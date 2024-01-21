@@ -81,3 +81,27 @@ jobs:
         # alias: ${{ secrets.SIGNING_KEY_ALIAS }}
         # keyStorePassword: ${{ secrets.SIGNING_KEY_STORE_PASSWORD }}
         # keyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        
+      
+    # Fastlane 위한 Ruby Setting
+    - name: Set Up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler: "Gemfile.lock"
+        ruby-version: 2.7.2
+        bundler-cache: true
+
+    # Fastlane Setting
+    - name: Set Up fastlane And Publish Google Play
+      uses: maierj/fastlane-action@v2.2.0
+      with:
+        lane: 'productionDeploy'
+        SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+        SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_KEY_STORE_PASSWORD }} 
+
+    # - name: Discord Webhook Action
+      # uses: tsickert/discord-webhook@v5.3.0
+      # with:
+        # webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+        # content: "보내고 싶은 텍스트"
