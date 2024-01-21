@@ -70,14 +70,14 @@ jobs:
         retention-days: 14
 
     # Sign Android Release Action
-    - name: Sign APK
-      id: sign_app
-      uses: r0adkll/sign-android-release@v1
-      with:
+    # - name: Sign APK
+      # id: sign_app
+      # uses: r0adkll/sign-android-release@v1
+      # with:
         # releaseDirectory: app/release
         # releaseDirectory: ./app/release
-        releaseDirectory: ./app/build/outputs/apk/release
-        signingKeyBase64: ${{ secrets.APP_RELEASE_KEY_STORE_BASE64 }}
-        alias: ${{ secrets.SIGNING_KEY_ALIAS }}
-        keyStorePassword: ${{ secrets.SIGNING_KEY_STORE_PASSWORD }}
-        keyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        # releaseDirectory: ./app/build/outputs/apk/release
+        # signingKeyBase64: ${{ secrets.APP_RELEASE_KEY_STORE_BASE64 }}
+        # alias: ${{ secrets.SIGNING_KEY_ALIAS }}
+        # keyStorePassword: ${{ secrets.SIGNING_KEY_STORE_PASSWORD }}
+        # keyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
