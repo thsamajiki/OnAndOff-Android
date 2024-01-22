@@ -56,11 +56,11 @@ platform :android do
 
 
 
-  desc "Deploy a new version to the Google Play"
-      lane :deploy do
-          gradle(task: "clean bundleRelease")
-          upload_to_play_store
-      end
+  #desc "Deploy a new version to the Google Play"
+      #lane :deploy do
+          #gradle(task: "clean bundleRelease")
+          #upload_to_play_store
+      #end
 
   desc "Lane for distribution"
       lane :stagingDeploy do
